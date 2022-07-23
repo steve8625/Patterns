@@ -1,6 +1,4 @@
 
-#include "operation.h"
-
 class Component 
 {
 public:
@@ -29,12 +27,12 @@ public:
 class Composite : public Component 
 {
 private:
-    Operation* op_;
+    char op_;
     Component* left_;
     Component* right_;
 
 public:
-    Composite(Operation *op, Component *left, Component *right) {
+    Composite(char op, Component *left, Component *right) {
         left_ = left;
         right_ = right;
         op_ = op;
@@ -48,10 +46,10 @@ public:
         int count = 0;
         if (left_) count += left_->operation();
         if (right_) {
-            if (op_->get_type() == '+') {
+            if (op_ == '+') {
                 count += right_->operation();
             }
-            else if (op_->get_type() == '-') {
+            else if (op_ == '-') {
                 count -= right_->operation();
             }
         }
